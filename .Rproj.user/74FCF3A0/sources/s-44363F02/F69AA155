@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1650938378557.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F69AA155",
+    "lastKnownWriteTime" : 1650938304,
+    "last_content_update" : 1650938304,
+    "path" : "E:/inflasi/inflasi/Peramalan Inflasi.Rmd",
+    "project_path" : "Peramalan Inflasi.Rmd",
+    "properties" : {
+        "cursorPosition" : "1,25",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
