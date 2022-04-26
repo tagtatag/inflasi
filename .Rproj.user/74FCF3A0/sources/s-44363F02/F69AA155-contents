@@ -462,35 +462,33 @@ Dari perbandingan metrik akurasi diatas, nilai MAPE terkecil yakni 126.6405 adal
 
 # Plot Data Aktual dan Peramalan
 
-## Plot Data Aktual dan Peramalan Model SES
+## Plot Data Aktual dan Peramalan Model SES 
 
 ```{r}
-plot(inflasi.ts, main="", xlab = "Waktu", ylab = "Tingkat Inflasi",
-     lwd=1.5, col="#ff0000", xlim=c(2017,2022), pch=15)
-limitDate = end(inflasi.ts)[1]+(end(inflasi.ts)[2]-1)/frequency(inflasi.ts)
-lines(model.15$fitted[,1], lwd=1.5, col="#3399ff",  pch=1)
-legend("bottomright",legend=c("Aktual", "Peramalan"), col=c("red","#3399ff"), lty=1, cex = 0.7, inset=0.0)
-
+autoplot(inflasi.ts, series="Aktual") +
+  autolayer(model.15$fitted[,1], series="Peramalan") +
+  xlab("Waktu") +
+  ylab("Tingkat Inflasi [Persen]") +
+  guides(colour=guide_legend(title="Keterangan"))
 ```
 
 ## Plot Data Aktual dan Peramalan Model DES
 
 ```{r}
-plot(inflasi.ts, main="", xlab = "Waktu", ylab = "Tingkat Inflasi",
-     lwd=1.5, col="#ff0000", xlim=c(2017,2022), pch=15)
-limitDate = end(inflasi.ts)[1]+(end(inflasi.ts)[2]-1)/frequency(inflasi.ts)
-lines(model.29$fitted[,1], lwd=1.5, col="#3399ff",  pch=1)
-legend("bottomright",legend=c("Aktual", "Peramalan"), col=c("red","#3399ff"), lty=1, cex = 0.7, inset=0.0)
-
+autoplot(inflasi.ts, series="Aktual") +
+  autolayer(model.29$fitted[,1], series="Peramalan") +
+  xlab("Waktu") +
+  ylab("Tingkat Inflasi [Persen]") +
+  guides(colour=guide_legend(title="Keterangan"))
 ```
 ## Plot Data Aktual dan Peramalan Model DES
 
 ```{r}
-plot(inflasi.ts, main="", xlab = "Waktu", ylab = "Tingkat Inflasi",
-     lwd=1.5, col="#ff0000", xlim=c(2017,2022), pch=15)
-limitDate = end(inflasi.ts)[1]+(end(inflasi.ts)[2]-1)/frequency(inflasi.ts)
-lines(model.31$fitted[,1], lwd=1.5, col="#3399ff",  pch=1)
-legend("bottomright",legend=c("Aktual", "Peramalan"), col=c("red","#3399ff"), lty=1, cex = 0.7, inset=0.0)
+autoplot(inflasi.ts, series="Aktual") +
+  autolayer(model.31$fitted[,1], series="Peramalan") +
+  xlab("Waktu") +
+  ylab("Tingkat Inflasi [Persen]") +
+  guides(colour=guide_legend(title="Keterangan"))
 
 ```
 
@@ -509,14 +507,14 @@ ramalan.1
 
 ## Plot Hasil Peramalan dengan Model SES Terbaik
 
-Plot hasil ramalan berdasarkan pada 10 data terakhir dari data runtut waktu inflasi.ts
+Plot hasil ramalan 10 periode ke depan
 
 ```{r}
-train <- inflasi.ts %>% head(-10)
-test <- inflasi.ts %>% tail(10)
-
-autoplot(ramalan.1,xlab="Waktu", ylab="Tingkat Inflasi", main="Plot Hasil Peramalan dengan Model SES Terbaik")+autolayer(test)
-
+autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model SES Terbaik") +
+  autolayer(ramalan.1, series="Peramalan") +
+  xlab("Observation [Month]") +
+  ylab("Inflasi [Persen]") +
+  guides(colour=guide_legend(title="Keterangan"))
 ```
 
 ## Peramalan dengan Model DES Terbaik
@@ -530,13 +528,14 @@ ramalan.2
 
 ## Plot Hasil Peramalan dengan Model DES Terbaik
 
-Plot hasil ramalan berdasarkan pada 10 data terakhir dari data runtut waktu inflasi.ts
+Plot hasil ramalan 10 periode ke depan
 
 ```{r}
-train <- inflasi.ts %>% head(-10)
-test <- inflasi.ts %>% tail(10)
-
-autoplot(ramalan.2,xlab="Waktu", ylab="Tingkat Inflasi", main="Plot Hasil Peramalan dengan Model DES Terbaik")+autolayer(test)
+autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model DES Terbaik") +
+  autolayer(ramalan.2, series="Peramalan") +
+  xlab("Observation [Month]") +
+  ylab("Inflasi [Persen]") +
+  guides(colour=guide_legend(title="Keterangan"))
 
 ```
 
@@ -553,12 +552,13 @@ ramalan.3
 
 ## Plot Hasil Peramalan dengan Model TES Terbaik
 
-Plot hasil ramalan berdasarkan pada 5 data terakhir dari data runtut waktu inflasi.ts
+Plot hasil ramalan 10 periode ke depan
 
 ```{r}
-train <- inflasi.ts %>% head(-10)
-test <- inflasi.ts %>% tail(10)
-
-autoplot(ramalan.3,xlab="Waktu", ylab="Tingkat Inflasi", main="Plot Hasil Peramalan dengan Model TES Terbaik")+autolayer(test)
+autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model TES Terbaik") +
+  autolayer(ramalan.3, series="Peramalan") +
+  xlab("Observation [Month]") +
+  ylab("Inflasi [Persen]") +
+  guides(colour=guide_legend(title="Keterangan"))
 
 ```

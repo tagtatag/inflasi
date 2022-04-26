@@ -1,0 +1,67 @@
+"0","library(plotly)"
+"2","Loading required package: ggplot2
+"
+"2","Registered S3 method overwritten by 'data.table':
+  method           from
+  print.data.table     
+"
+"2","Registered S3 methods overwritten by 'htmltools':
+  method               from         
+  print.html           tools:rstudio
+  print.shiny.tag      tools:rstudio
+  print.shiny.tag.list tools:rstudio
+"
+"2","Registered S3 method overwritten by 'htmlwidgets':
+  method           from         
+  print.htmlwidget tools:rstudio
+"
+"2","
+Attaching package: ‘plotly’
+
+"
+"2","The following object is masked from ‘package:ggplot2’:
+
+    last_plot
+
+"
+"2","The following object is masked from ‘package:stats’:
+
+    filter
+
+"
+"2","The following object is masked from ‘package:graphics’:
+
+    layout
+
+"
+"0","library(forecast)"
+"2","package ‘forecast’ was built under R version 3.6.3"
+"2","Registered S3 method overwritten by 'quantmod':
+  method            from
+  as.zoo.data.frame zoo 
+"
+"0","library(xts)"
+"2","package ‘xts’ was built under R version 3.6.3"
+"2","Loading required package: zoo
+"
+"2","package ‘zoo’ was built under R version 3.6.3"
+"2","
+Attaching package: ‘zoo’
+
+"
+"2","The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+"
+"0","library(Metrics)"
+"2","package ‘Metrics’ was built under R version 3.6.3"
+"2","
+Attaching package: ‘Metrics’
+
+"
+"2","The following object is masked from ‘package:forecast’:
+
+    accuracy
+
+"

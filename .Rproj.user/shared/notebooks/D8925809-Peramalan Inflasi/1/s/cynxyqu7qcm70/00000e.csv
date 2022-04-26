@@ -1,0 +1,5 @@
+"0","autoplot(inflasi.ts, series=""Aktual"") +"
+"0","  autolayer(model.31$fitted[,1], series=""Peramalan"") +"
+"0","  xlab(""Waktu"") +"
+"0","  ylab(""Tingkat Inflasi [Persen]"") +"
+"0","  guides(colour=guide_legend(title=""Keterangan""))"

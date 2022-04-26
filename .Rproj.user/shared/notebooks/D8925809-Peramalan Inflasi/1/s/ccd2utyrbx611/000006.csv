@@ -1,0 +1,5 @@
+"0","autoplot(inflasi.ts, series=""Aktual"", main=""Plot Hasil Peramalan dengan Model DES Terbaik"") +"
+"0","  autolayer(ramalan.2, series=""Peramalan"") +"
+"0","  xlab(""Observation [Month]"") +"
+"0","  ylab(""Inflasi [Persen]"") +"
+"0","  guides(colour=guide_legend(title=""Keterangan""))"
