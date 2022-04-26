@@ -12,7 +12,7 @@ output: github_document
 
 # Data
 
-Data yang digunakan merupakan data tingkat inflasi Kabupaten Tulungagung sejak **Januari 2017** sampai dengan **Desember 2021** sehingga diperoleh 60 data.
+Data yang digunakan merupakan data tingkat inflasi Kabupaten Tulungagung sejak **Januari 2017** sampai dengan **Desember 2021** sehingga diperoleh **60 data**.
 
 
 # Impor Data
