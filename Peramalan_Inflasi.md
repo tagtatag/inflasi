@@ -1,7 +1,7 @@
 Peramalan Tingkat Inflasi Kabupaten Tulungagung dengan Exponential
 Smoothing
 ================
-Ndaru
+Muhammad Tatag Adi Ndaru
 April 26, 2022
 
 # Data
@@ -688,7 +688,8 @@ autoplot(inflasi.ts, series="Aktual") +
 ```
 
 ![](Peramalan_Inflasi_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->
-\#\# Plot Data Aktual dan Peramalan Model DES
+
+## Plot Data Aktual dan Peramalan Model TES
 
 ``` r
 autoplot(inflasi.ts, series="Aktual") +
@@ -730,7 +731,7 @@ Plot hasil ramalan 10 periode ke depan
 ``` r
 autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model SES Terbaik") +
   autolayer(ramalan.1, series="Peramalan") +
-  xlab("Observation [Month]") +
+  xlab("Waktu [Bulan]") +
   ylab("Inflasi [Persen]") +
   guides(colour=guide_legend(title="Keterangan"))
 ```
@@ -765,7 +766,7 @@ Plot hasil ramalan 10 periode ke depan
 ``` r
 autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model DES Terbaik") +
   autolayer(ramalan.2, series="Peramalan") +
-  xlab("Observation [Month]") +
+  xlab("Waktu [Bulan]") +
   ylab("Inflasi [Persen]") +
   guides(colour=guide_legend(title="Keterangan"))
 ```
@@ -800,7 +801,7 @@ Plot hasil ramalan 10 periode ke depan
 ``` r
 autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model TES Terbaik") +
   autolayer(ramalan.3, series="Peramalan") +
-  xlab("Observation [Month]") +
+  xlab("Waktu [Bulan]") +
   ylab("Inflasi [Persen]") +
   guides(colour=guide_legend(title="Keterangan"))
 ```

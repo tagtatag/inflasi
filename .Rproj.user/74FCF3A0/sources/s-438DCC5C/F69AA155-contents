@@ -1,6 +1,6 @@
 ---
 title: "Peramalan Inflasi"
-author: "Ndaru"
+author: "Muhammad Tatag Adi Ndaru"
 date: "April 26, 2022"
 output: github_document
 ---
@@ -46,7 +46,9 @@ inflasi.ts
 ```
 
 # Visualisasi Data
+
 Visualisasi data ke dalam plot untuk memudahkan dalam melihat dan menganalisis data  
+
 ```{r}
 autoplot(inflasi.ts, xlab="Waktu", ylab="Tingkat Inflasi" )
 ```
@@ -472,6 +474,7 @@ autoplot(inflasi.ts, series="Aktual") +
   guides(colour=guide_legend(title="Keterangan"))
 ```
 
+
 ## Plot Data Aktual dan Peramalan Model DES
 
 ```{r}
@@ -481,7 +484,8 @@ autoplot(inflasi.ts, series="Aktual") +
   ylab("Tingkat Inflasi [Persen]") +
   guides(colour=guide_legend(title="Keterangan"))
 ```
-## Plot Data Aktual dan Peramalan Model DES
+
+## Plot Data Aktual dan Peramalan Model TES
 
 ```{r}
 autoplot(inflasi.ts, series="Aktual") +
@@ -512,7 +516,7 @@ Plot hasil ramalan 10 periode ke depan
 ```{r}
 autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model SES Terbaik") +
   autolayer(ramalan.1, series="Peramalan") +
-  xlab("Observation [Month]") +
+  xlab("Waktu [Bulan]") +
   ylab("Inflasi [Persen]") +
   guides(colour=guide_legend(title="Keterangan"))
 ```
@@ -533,7 +537,7 @@ Plot hasil ramalan 10 periode ke depan
 ```{r}
 autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model DES Terbaik") +
   autolayer(ramalan.2, series="Peramalan") +
-  xlab("Observation [Month]") +
+  xlab("Waktu [Bulan]") +
   ylab("Inflasi [Persen]") +
   guides(colour=guide_legend(title="Keterangan"))
 
@@ -557,7 +561,7 @@ Plot hasil ramalan 10 periode ke depan
 ```{r}
 autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model TES Terbaik") +
   autolayer(ramalan.3, series="Peramalan") +
-  xlab("Observation [Month]") +
+  xlab("Waktu [Bulan]") +
   ylab("Inflasi [Persen]") +
   guides(colour=guide_legend(title="Keterangan"))
 
