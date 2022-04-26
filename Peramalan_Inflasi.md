@@ -8,7 +8,7 @@ April 26, 2022
 
 Data yang digunakan merupakan data tingkat inflasi Kabupaten Tulungagung
 sejak **Januari 2017** sampai dengan **Desember 2021** sehingga
-diperoleh 60 data.
+diperoleh **60 data**.
 
 # Impor Data
 
@@ -668,11 +668,11 @@ dengan nilai **alpha = 0.1** , **beta = 0.1**, dan **gamma = 0.3**
 ## Plot Data Aktual dan Peramalan Model SES
 
 ``` r
-plot(inflasi.ts, main="", xlab = "Waktu", ylab = "Tingkat Inflasi",
-     lwd=1.5, col="#ff0000", xlim=c(2017,2022), pch=15)
-limitDate = end(inflasi.ts)[1]+(end(inflasi.ts)[2]-1)/frequency(inflasi.ts)
-lines(model.15$fitted[,1], lwd=1.5, col="#3399ff",  pch=1)
-legend("bottomright",legend=c("Aktual", "Peramalan"), col=c("red","#3399ff"), lty=1, cex = 0.7, inset=0.0)
+autoplot(inflasi.ts, series="Aktual") +
+  autolayer(model.15$fitted[,1], series="Peramalan") +
+  xlab("Waktu") +
+  ylab("Tingkat Inflasi [Persen]") +
+  guides(colour=guide_legend(title="Keterangan"))
 ```
 
 ![](Peramalan_Inflasi_files/figure-gfm/unnamed-chunk-37-1.png)<!-- -->
@@ -680,22 +680,22 @@ legend("bottomright",legend=c("Aktual", "Peramalan"), col=c("red","#3399ff"), lt
 ## Plot Data Aktual dan Peramalan Model DES
 
 ``` r
-plot(inflasi.ts, main="", xlab = "Waktu", ylab = "Tingkat Inflasi",
-     lwd=1.5, col="#ff0000", xlim=c(2017,2022), pch=15)
-limitDate = end(inflasi.ts)[1]+(end(inflasi.ts)[2]-1)/frequency(inflasi.ts)
-lines(model.29$fitted[,1], lwd=1.5, col="#3399ff",  pch=1)
-legend("bottomright",legend=c("Aktual", "Peramalan"), col=c("red","#3399ff"), lty=1, cex = 0.7, inset=0.0)
+autoplot(inflasi.ts, series="Aktual") +
+  autolayer(model.29$fitted[,1], series="Peramalan") +
+  xlab("Waktu") +
+  ylab("Tingkat Inflasi [Persen]") +
+  guides(colour=guide_legend(title="Keterangan"))
 ```
 
 ![](Peramalan_Inflasi_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->
 \#\# Plot Data Aktual dan Peramalan Model DES
 
 ``` r
-plot(inflasi.ts, main="", xlab = "Waktu", ylab = "Tingkat Inflasi",
-     lwd=1.5, col="#ff0000", xlim=c(2017,2022), pch=15)
-limitDate = end(inflasi.ts)[1]+(end(inflasi.ts)[2]-1)/frequency(inflasi.ts)
-lines(model.31$fitted[,1], lwd=1.5, col="#3399ff",  pch=1)
-legend("bottomright",legend=c("Aktual", "Peramalan"), col=c("red","#3399ff"), lty=1, cex = 0.7, inset=0.0)
+autoplot(inflasi.ts, series="Aktual") +
+  autolayer(model.31$fitted[,1], series="Peramalan") +
+  xlab("Waktu") +
+  ylab("Tingkat Inflasi [Persen]") +
+  guides(colour=guide_legend(title="Keterangan"))
 ```
 
 ![](Peramalan_Inflasi_files/figure-gfm/unnamed-chunk-39-1.png)<!-- -->
@@ -725,14 +725,14 @@ ramalan.1
 
 ## Plot Hasil Peramalan dengan Model SES Terbaik
 
-Plot hasil ramalan berdasarkan pada 10 data terakhir dari data runtut
-waktu inflasi.ts
+Plot hasil ramalan 10 periode ke depan
 
 ``` r
-train <- inflasi.ts %>% head(-10)
-test <- inflasi.ts %>% tail(10)
-
-autoplot(ramalan.1,xlab="Waktu", ylab="Tingkat Inflasi", main="Plot Hasil Peramalan dengan Model SES Terbaik")+autolayer(test)
+autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model SES Terbaik") +
+  autolayer(ramalan.1, series="Peramalan") +
+  xlab("Observation [Month]") +
+  ylab("Inflasi [Persen]") +
+  guides(colour=guide_legend(title="Keterangan"))
 ```
 
 ![](Peramalan_Inflasi_files/figure-gfm/unnamed-chunk-41-1.png)<!-- -->
@@ -760,14 +760,14 @@ ramalan.2
 
 ## Plot Hasil Peramalan dengan Model DES Terbaik
 
-Plot hasil ramalan berdasarkan pada 10 data terakhir dari data runtut
-waktu inflasi.ts
+Plot hasil ramalan 10 periode ke depan
 
 ``` r
-train <- inflasi.ts %>% head(-10)
-test <- inflasi.ts %>% tail(10)
-
-autoplot(ramalan.2,xlab="Waktu", ylab="Tingkat Inflasi", main="Plot Hasil Peramalan dengan Model DES Terbaik")+autolayer(test)
+autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model DES Terbaik") +
+  autolayer(ramalan.2, series="Peramalan") +
+  xlab("Observation [Month]") +
+  ylab("Inflasi [Persen]") +
+  guides(colour=guide_legend(title="Keterangan"))
 ```
 
 ![](Peramalan_Inflasi_files/figure-gfm/unnamed-chunk-43-1.png)<!-- -->
@@ -795,14 +795,14 @@ ramalan.3
 
 ## Plot Hasil Peramalan dengan Model TES Terbaik
 
-Plot hasil ramalan berdasarkan pada 5 data terakhir dari data runtut
-waktu inflasi.ts
+Plot hasil ramalan 10 periode ke depan
 
 ``` r
-train <- inflasi.ts %>% head(-10)
-test <- inflasi.ts %>% tail(10)
-
-autoplot(ramalan.3,xlab="Waktu", ylab="Tingkat Inflasi", main="Plot Hasil Peramalan dengan Model TES Terbaik")+autolayer(test)
+autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model TES Terbaik") +
+  autolayer(ramalan.3, series="Peramalan") +
+  xlab("Observation [Month]") +
+  ylab("Inflasi [Persen]") +
+  guides(colour=guide_legend(title="Keterangan"))
 ```
 
 ![](Peramalan_Inflasi_files/figure-gfm/unnamed-chunk-45-1.png)<!-- -->
