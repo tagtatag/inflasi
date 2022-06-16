@@ -99,6 +99,10 @@ library(Metrics)
     ## 
     ##     accuracy
 
+``` r
+library(ggplot2)
+```
+
 # Mengubah ke Time Series
 
 Mengubah data menjadi *time series* (runtun waktu)
@@ -127,7 +131,7 @@ Visualisasi data ke dalam plot untuk memudahkan dalam melihat dan
 menganalisis data
 
 ``` r
-autoplot(inflasi.ts, xlab="Waktu", ylab="Tingkat Inflasi" )
+autoplot(inflasi.ts, main="Plot Data Tingkat Inflasi Kab. Tulungagung 2017-2021", xlab="Waktu (Tahun)", ylab="Tingkat Inflasi (Persen)" )
 ```
 
 ![](Peramalan_Inflasi_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
@@ -632,7 +636,7 @@ akurasi38
     ## MAPE                                                 131.75475683
 
 ``` r
-## Alpha = 0.6, Beta = 0.1, Gamma = 0.1
+## Model39 (Alpha = 0.6, Beta = 0.1, Gamma = 0.1)
 MSE39 <- mse(actual = inflasi.ts, predicted = model.39$fitted)
 MAPE39 <- mape(actual = inflasi.ts, predicted = model.39$fitted)*100
 akurasi39 <- matrix(c(MSE39,MAPE39))
@@ -668,11 +672,15 @@ dengan nilai **alpha = 0.1** , **beta = 0.1**, dan **gamma = 0.3**
 ## Plot Data Aktual dan Peramalan Model SES
 
 ``` r
-autoplot(inflasi.ts, series="Aktual") +
-  autolayer(model.15$fitted[,1], series="Peramalan") +
-  xlab("Waktu") +
-  ylab("Tingkat Inflasi [Persen]") +
-  guides(colour=guide_legend(title="Keterangan"))
+clrs <- c("#BF2605", "#0F69F5")
+
+autoplot(inflasi.ts, main="Plot Data Aktual dan Model SES Alpha = 0.5", series="Aktual") +
+  autolayer(model.15$fitted[,1], series="Model SES") +
+  theme_minimal() +
+  xlab("Waktu (Tahun)") +
+  ylab("Tingkat Inflasi (Persen)") +
+  guides(colour=guide_legend(title="Keterangan")) +
+  scale_color_manual(values=clrs)
 ```
 
 ![](Peramalan_Inflasi_files/figure-gfm/unnamed-chunk-37-1.png)<!-- -->
@@ -680,11 +688,15 @@ autoplot(inflasi.ts, series="Aktual") +
 ## Plot Data Aktual dan Peramalan Model DES
 
 ``` r
-autoplot(inflasi.ts, series="Aktual") +
-  autolayer(model.29$fitted[,1], series="Peramalan") +
-  xlab("Waktu") +
-  ylab("Tingkat Inflasi [Persen]") +
-  guides(colour=guide_legend(title="Keterangan"))
+clrs <- c("#BF2605", "#0F69F5")
+
+autoplot(inflasi.ts, main="Plot Data Aktual dan Model DES Alpha=0.9 & Beta=0.1", series="Aktual") +
+  autolayer(model.29$fitted[,1], series="Model DES") +
+  theme_minimal() +
+  xlab("Waktu (Tahun)") +
+  ylab("Tingkat Inflasi (Persen)") +
+  guides(colour=guide_legend(title="Keterangan")) +
+  scale_color_manual(values=clrs)
 ```
 
 ![](Peramalan_Inflasi_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->
@@ -692,11 +704,15 @@ autoplot(inflasi.ts, series="Aktual") +
 ## Plot Data Aktual dan Peramalan Model TES
 
 ``` r
-autoplot(inflasi.ts, series="Aktual") +
-  autolayer(model.31$fitted[,1], series="Peramalan") +
-  xlab("Waktu") +
-  ylab("Tingkat Inflasi [Persen]") +
-  guides(colour=guide_legend(title="Keterangan"))
+clrs <- c("#BF2605", "#0F69F5")
+
+autoplot(inflasi.ts, main="Plot Data Aktual dan Model TES Alpha=0.1,Beta=0.1,Gamma=0.3", series="Aktual") +
+  autolayer(model.31$fitted[,1], series="Model TES") +
+  theme_minimal() +
+  xlab("Waktu (Tahun)") +
+  ylab("Tingkat Inflasi (Persen)") +
+  guides(colour=guide_legend(title="Keterangan"))+
+  scale_color_manual(values=clrs)
 ```
 
 ![](Peramalan_Inflasi_files/figure-gfm/unnamed-chunk-39-1.png)<!-- -->
@@ -708,7 +724,7 @@ autoplot(inflasi.ts, series="Aktual") +
 Menampilkan peramalan 10 periode ke depan
 
 ``` r
-ramalan.1<- forecast(model.15, h=10)
+ramalan.1<- forecast(model.15, level=c(80,95), h=10)
 ramalan.1
 ```
 
@@ -729,11 +745,16 @@ ramalan.1
 Plot hasil ramalan 10 periode ke depan
 
 ``` r
-autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model SES Terbaik") +
+clrs <- c("black","blue")
+
+autoplot(inflasi.ts, series="Aktual") +
+  ggtitle("Plot Hasil Peramalan dengan Model SES Alpha=0.5") +
   autolayer(ramalan.1, series="Peramalan") +
-  xlab("Waktu [Bulan]") +
-  ylab("Inflasi [Persen]") +
-  guides(colour=guide_legend(title="Keterangan"))
+  theme_minimal() +
+  xlab("Waktu (Tahun)") +
+  ylab("Tingkat Inflasi (Persen)")+
+  guides(colour=guide_legend(title="Keterangan"))+
+  scale_color_manual(values=clrs)
 ```
 
 ![](Peramalan_Inflasi_files/figure-gfm/unnamed-chunk-41-1.png)<!-- -->
@@ -743,7 +764,7 @@ autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model SE
 Menampilkan peramalan 10 periode ke depan
 
 ``` r
-ramalan.2<- forecast(model.29, h=10)
+ramalan.2<- forecast(model.29, level=c(80,95), h=10)
 ramalan.2
 ```
 
@@ -764,11 +785,14 @@ ramalan.2
 Plot hasil ramalan 10 periode ke depan
 
 ``` r
-autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model DES Terbaik") +
+clrs <- c("black","blue")
+autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model DES Alpha=0.9 & Beta=0.1") +
   autolayer(ramalan.2, series="Peramalan") +
-  xlab("Waktu [Bulan]") +
-  ylab("Inflasi [Persen]") +
-  guides(colour=guide_legend(title="Keterangan"))
+  theme_minimal() +
+  xlab("Waktu (Tahun)") +
+  ylab("Tingkat Inflasi (Persen)") +
+  guides(colour=guide_legend(title="Keterangan"))+
+  scale_color_manual(values=clrs)
 ```
 
 ![](Peramalan_Inflasi_files/figure-gfm/unnamed-chunk-43-1.png)<!-- -->
@@ -778,7 +802,7 @@ autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model DE
 Menampilkan peramalan 10 periode ke depan
 
 ``` r
-ramalan.3<- forecast(model.31, h=10)
+ramalan.3<- forecast(model.31, level = c(80,95),h=10)
 ramalan.3
 ```
 
@@ -799,11 +823,14 @@ ramalan.3
 Plot hasil ramalan 10 periode ke depan
 
 ``` r
-autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model TES Terbaik") +
+clrs <- c("black","blue")
+autoplot(inflasi.ts, series="Aktual", main="Plot Hasil Peramalan dengan Model TES Alpha=0.1,Beta=0.1,Gamma=0.3") +
   autolayer(ramalan.3, series="Peramalan") +
-  xlab("Waktu [Bulan]") +
-  ylab("Inflasi [Persen]") +
-  guides(colour=guide_legend(title="Keterangan"))
+  theme_minimal() +
+  xlab("Waktu (Tahun)") +
+  ylab("Tingkat Inflasi (Persen)") +
+  guides(colour=guide_legend(title="Keterangan"))+
+  scale_color_manual(values=clrs)
 ```
 
 ![](Peramalan_Inflasi_files/figure-gfm/unnamed-chunk-45-1.png)<!-- -->
