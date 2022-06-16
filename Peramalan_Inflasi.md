@@ -1,7 +1,7 @@
 Peramalan Tingkat Inflasi Kabupaten Tulungagung dengan Exponential
 Smoothing
 ================
-Muhammad Tatag Adi Ndaru
+Muhammad Tatag Adi Ndaru/180535632517
 April 26, 2022
 
 # Data
