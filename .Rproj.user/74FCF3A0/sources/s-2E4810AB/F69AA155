@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1153581727",
+    "hash" : "3942663730",
     "id" : "F69AA155",
-    "lastKnownWriteTime" : 1655349648,
-    "last_content_update" : 1655349819459,
+    "lastKnownWriteTime" : 1655350267,
+    "last_content_update" : 1655350267875,
     "path" : "E:/inflasi/inflasi/Peramalan Inflasi.Rmd",
     "project_path" : "Peramalan Inflasi.Rmd",
     "properties" : {
-        "cursorPosition" : "443,49",
-        "scrollLine" : "434"
+        "cursorPosition" : "2,34",
+        "scrollLine" : "0"
     },
     "relative_order" : 3,
     "source_on_save" : false,
