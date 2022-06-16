@@ -1,0 +1,2 @@
+"0","ramalan.2<- forecast(model.29, level=c(80,95), h=10)"
+"0","ramalan.2"

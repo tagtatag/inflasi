@@ -1,0 +1,8 @@
+"0","clrs <- c(""black"",""blue"")"
+"0","autoplot(inflasi.ts, series=""Aktual"", main=""Plot Hasil Peramalan dengan Model DES Alpha=0.9 & Beta=0.1"") +"
+"0","  autolayer(ramalan.2, series=""Peramalan"") +"
+"0","  theme_minimal() +"
+"0","  xlab(""Waktu (Tahun)"") +"
+"0","  ylab(""Tingkat Inflasi (Persen)"") +"
+"0","  guides(colour=guide_legend(title=""Keterangan""))+"
+"0","  scale_color_manual(values=clrs)"
